@@ -1,0 +1,43 @@
+앤서블(Ansible)
+- 자동화 동구(laC)중 하나
+- 별도의 에이전트 설치가 필요x
+- 인벤토리
+	관리할 대상(호스트)들을 지정해주는 파일
+	정적/동적 파일로 작성 가능
+	ansible.cfg 파일에서 위치/이름 지정	//해야 사용가능
+
+- 구성파일
+	/etc/ansible/ansible.cfg 파일이 기본
+	일반적으로 현재 작업 디렉토리에 ansible.cfg 파일을 사용
+	인벤토리 파일 경로를 포함한 다양한 설정 값을 지정
+
+- 플레이북
+	YAML 형식으로 작성
+	-> 들여쓰기에 민감
+	작업할 내용을 작성하는 파일
+		-> 대상지정*, 작업내용(모듈)*, 반복문/조건문 등, 변수....
+
+YAML 파일 편집시 팁
+1. 편집기 설정
+	$vim ~/.vimrc
+	syntax on
+	autocmd FileType yaml setlocal sw=2 sts=2 ts=2 ai et
+2. 붙여넣기 시
+	$vim xxx.yaml	-> 편집기로 파일 열고
+	:set paste		-> Extended 모드에서 명령어 입력
+
+모듈 소개
+1. 파일 관리
+	copy, lineinfile, blockinfile//파일 내용을 수정할때, file, templete//파일안에 작성되어있는 변수, 조건 등에 맞을 때만 실행
+
+2. 사용자 관리
+	user, group
+
+3. 패키지 관리
+	yum, apt, dnf, package......
+
+4. 서비스 관리
+	service
+
+5. 방화벽 관리
+	firewalld
