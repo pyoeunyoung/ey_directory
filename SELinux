@@ -1,0 +1,23 @@
+SELinux
+-리눅스 시스템을 조금 더 안전하게 사용하기 위한 방편
+-접근제어모델을 DAC(사용자이름기준) -> MAC(프로세스 종류)
+-파일 컨텍스트/포트레이블/부울 로 접근제어 규칙 지정
+	파일 컨텍스트 : 파일에 대한 프로세스 단위의 접근제어 규칙
+	포트레이블 : 포트에 대한 프로세스 단위의 접근제어 규칙
+	부울 : 특정 기능에 대한 스위치 역할(예외처리)
+	=> 동작모드가 enforcing(활성화)일 경우에만 사용
+
+설정방식
+1. 동작모드
+	/etc/selinux/config 파일에 설정해야 영구설정
+	setenforce / getenforce	명령어로 임시 설정 및 확인
+2. 파일컨텍스트
+	semanage fcontext -a -t CONTEXT DIRECTORY
+	restorecon -RFv DIRECTORY
+	ls -Z
+3. 포트레이블
+	semanage port -a -t CONTEXT -p tcp PORTNUMBER
+	semanage port -l
+4. 부울
+	semanage boolean BOOL --on/--off
+	semanage boolean -l
